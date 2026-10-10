@@ -13,13 +13,21 @@ Built using an original Raspberry Pi Pico, CircuitPython, and the [dbisu/pico-du
 
 ## Hardware
 
-- Raspberry Pi Pico (original, without Wi-Fi)
-- USB data cable
-- Computer used for authorized testing
+An original Raspberry Pi Pico used for the lab.
+
+![Raspberry Pi Pico hardware](images/pico-hardware.jpeg)
+
+## Configuration
+
+The files stored on the Pico for the demonstration.
+
+![Pico files](images/pico-files.png)
 
 ## Practical Test
 
-Connected the Pico over USB and successfully demonstrated keyboard emulation by opening a terminal and typing my name.
+The Pico was connected over USB and successfully demonstrated keyboard emulation by opening a terminal and typing my name.
+
+![Successful HID test](images/hid-test-result.png)
 
 ## Security Relevance
 
