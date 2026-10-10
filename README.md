@@ -1,111 +1,100 @@
 # Raspberry Pi Pico USB HID Security Lab
 
-A hands-on security lab using a Raspberry Pi Pico as a USB Human Interface Device (HID).
-
-This project explores USB HID behavior, keyboard emulation, keyboard-layout compatibility, and the security implications of trusted USB peripherals.
+A hands-on lab exploring USB Human Interface Device (HID) behavior using a Raspberry Pi Pico. The project focuses on keyboard emulation, keyboard-layout compatibility, safe testing, and the security implications of trusted USB peripherals.
 
 ## Objectives
 
-- Understand how USB HID devices work
-- Experiment with Raspberry Pi Pico keyboard emulation
-- Test HID behavior on Linux and Windows
-- Investigate keyboard-layout compatibility
-- Build safe and controlled HID demonstrations
-- Document security risks related to untrusted USB devices
+- Understand how USB HID keyboards are recognized by host systems.
+- Build and test a simple CircuitPython HID demonstration.
+- Observe how keyboard layouts affect typed characters.
+- Record reproducible results on Linux and Windows where available.
+- Document security lessons and limitations using evidence from real tests.
 
-## Hardware
+## Hardware and software
 
-- Raspberry Pi Pico
-- USB cable
-- Test computer
+**Hardware**
+- Raspberry Pi Pico (original Pico supported by the chosen firmware)
+- USB data cable
+- A computer you own or are authorized to test
 
-## Software
+**Software**
+- CircuitPython firmware for the exact Pico model
+- Matching Adafruit CircuitPython Library Bundle
+- A plain-text editor on the host computer
 
-The exact software and libraries used for each experiment will be documented alongside the implementation.
+See [Setup Guide](docs/setup.md) for installation instructions.
 
-Testing may include:
-
-- Linux
-- Windows
-- Raspberry Pi Pico firmware and HID libraries
-
-## Project Structure
+## Repository structure
 
 ```text
 raspberry-pi-pico-usb-hid-lab/
 ├── README.md
 ├── src/
+│   └── code.py
 ├── payloads/
+│   └── README.md
 ├── docs/
+│   ├── setup.md
+│   ├── test-plan.md
+│   └── experiment-log-template.md
 ├── images/
 └── LICENSE
 ```
 
 ## Experiments
 
-### 1. Basic USB HID
+### Experiment 1 — Basic USB HID keyboard
 
-Configure the Raspberry Pi Pico to identify as a USB keyboard and send controlled keystrokes to a test machine.
+The starter program in `src/code.py` waits five seconds, then types a harmless informational line into the currently focused application. It does not execute commands or change system settings.
 
-### 2. Keyboard Layout Compatibility
+**Status: Implementation added; hardware test not yet confirmed.**
 
-Investigate how keyboard layouts can affect HID input.
+1. Follow the [Setup Guide](docs/setup.md).
+2. Copy `src/code.py` to the root of the Pico's `CIRCUITPY` drive as `code.py`.
+3. Focus a blank text editor on your test computer.
+4. Connect the Pico normally and wait for the countdown.
+5. Record the result using the [Experiment 1 test plan](docs/test-plan.md).
 
-Layouts of interest include:
+### Experiment 2 — Keyboard-layout compatibility
 
-- QWERTY
-- AZERTY
-- QWERTZ
+Compare the expected output with the actual output on different host keyboard layouts (for example, US QWERTY and French AZERTY). Record the host layout and any character differences. This experiment should only be marked complete after testing.
 
-The goal is to understand why identical HID keystrokes can produce different characters depending on the target system's keyboard configuration.
+### Experiment 3 — Cross-platform behavior
 
-### 3. Cross-Platform Testing
+When available, repeat the basic test on authorized Linux and Windows systems. Record the operating system version, firmware, library version, and observed behavior.
 
-Test HID behavior in controlled environments running Linux and Windows.
+## Methodology
 
-Compatibility issues, observations, and limitations will be documented as the experiments are completed.
+1. Define the experiment and expected outcome.
+2. Prepare a controlled environment.
+3. Run the demonstration on an authorized test computer.
+4. Record the actual result and any errors.
+5. Capture screenshots that do not expose personal information.
+6. Document limitations and follow-up questions.
 
-### 4. Security Considerations
+Use [docs/experiment-log-template.md](docs/experiment-log-template.md) to record additional experiments.
 
-Explore why USB HID devices can present a security risk when an attacker has physical access to a computer.
+## Current status
 
-Testing is limited to systems owned by or explicitly authorized by the tester.
-
-## Lab Methodology
-
-1. Define the experiment
-2. Prepare an isolated test environment
-3. Connect the Raspberry Pi Pico
-4. Run a controlled HID demonstration
-5. Record the results
-6. Document problems and limitations
-7. Improve the implementation
-
-## Current Status
-
-**Project status:** In development
-
-| Experiment | Status |
+| Item | Status |
 |---|---|
-| Pico setup | In progress |
-| Basic USB HID | Planned |
+| Repository structure | Added |
+| CircuitPython setup guide | Added |
+| Basic HID demo code | Added; not yet hardware-verified |
+| Experiment 1 test plan | Added |
 | Keyboard-layout testing | Planned |
-| Linux testing | Planned |
-| Windows testing | Planned |
-| Documentation | In progress |
+| Linux/Windows comparison | Planned |
+| Screenshots and evidence | To be added after testing |
 
-## Security Disclaimer
+## Safety and scope
 
-This project is intended for educational purposes and authorized security testing.
-
-Only use the device and associated software on systems you own or have explicit permission to test. Do not use the techniques documented here to access, modify, or interfere with systems without authorization.
+This is an educational project for systems owned by the author or explicitly authorized for testing. The initial demo types one visible, harmless line of text. Do not use this project to collect credentials, execute unauthorized commands, evade security controls, or interfere with other people's systems.
 
 ## Author
 
-**Yassine Dakhla**
-
+**Yassine Dakhla**  
 Cybersecurity student interested in Linux, networking, infrastructure, and security research.
 
 ## License
 
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+Released under the MIT License. See [LICENSE](LICENSE).
